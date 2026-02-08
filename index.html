@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuma Balcha - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="font-sans text-slate-800 overflow-x-hidden bg-white">
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-12 flex justify-between items-center h-[70px]">
+            <div class="text-2xl font-bold text-slate-800 tracking-tight">
+                <a href="#home" class="hover:text-primary transition-colors">Kuma Balcha</a>
+            </div>
+            <ul class="hidden md:flex list-none gap-8">
+                <li><a href="#home" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Home</a></li>
+                <li><a href="#about" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a></li>
+                <li><a href="#projects" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Projects</a></li>
+                <li><a href="#gallery" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Gallery</a></li>
+                <li><a href="#contact" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contact</a></li>
+            </ul>
+            <div class="md:hidden flex flex-col gap-[5px] cursor-pointer" id="mobile-menu">
+                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
+                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
+                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden fixed top-[70px] left-0 w-full bg-white shadow-lg py-12 flex-col items-center gap-4" id="mobile-menu-items">
+            <a href="#home" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Home</a>
+            <a href="#about" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">About</a>
+            <a href="#projects" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Projects</a>
+            <a href="#gallery" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Gallery</a>
+            <a href="#contact" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Kuma Balcha</span></h1>
+                <div class="animated-text">
+                    <span class="typing-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">Passionate about creating innovative solutions and continuously learning new technologies to solve real-world problems.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <div class="profile-placeholder" id="profileImage">
+                        <img src="images/IMG_3188.JPG" alt="Kuma Balcha Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Kuma Balcha, born in 1996 in Ethiopia. My educational journey began at Amus Gaba Elementary School (grades 1-8), continued at Kachisi High School (grades 9-11), and I completed my preparatory education at Ambo Future Generation Hope High School.</p>
+                    <p>I'm passionate about technology and development, always eager to learn new skills and take on challenging projects that make a difference.</p>
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <strong>Ambo Future Generation Hope High School</strong> - Preparatory & Entrance Exam
+                        </div>
+                        <div class="education-item">
+                            <strong>Kachisi High School</strong> - Grades 9-11
+                        </div>
+                        <div class="education-item">
+                            <strong>Amus Gaba Elementary School</strong> - Grades 1-8
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h3>Skills & Interests</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Web Development</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Programming</span>
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Technology</span>
+                            <span class="skill-tag">Learning</span>
+                            <span class="skill-tag">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="House Rental Management System" style="width: 100%; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Digital House Rental Management System</h3>
+                        <p>A comprehensive digital platform for managing house rentals, tenant information, payment tracking, and property management with an intuitive dashboard.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Management System</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/keebii/Digital-house-rental-management-system-" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <a href="#" class="project-link demo-link" data-project="rental">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <button class="project-link gallery-link" data-project="rental">
+                                <i class="fas fa-images"></i> Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Your Personal Photos -->
+                <div class="gallery-item">
+                    <img src="images/IMG_3187.JPG" alt="My Photo 1" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_3558.JPG" alt="My Photo 2" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_3266 (2).JPG" alt="My Photo 3" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_3257.JPG" alt="My Photo 4" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/IMG_3252.JPG" alt="My Photo 5" style="width: 100%; height: 250px; object-fit: cover;">
+              
+                
+                <!-- Default placeholder items for demonstration -->
+                <div class="gallery-item">
+                    
+                    </div>
+                </div>
+                
+                    </div>
+                </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>I'm always interested in new opportunities and collaborations. Let's connect!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:keebiibaalchaa@gmail.com" class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>keebiibaalchaa@gmail.com</span>
+                        </a>
+                        <a href="https://t.me/unspoken24cs" target="_blank" class="contact-method">
+                            <i class="fab fa-telegram"></i>
+                            <span>@unspoken24cs</span>
+                        </a>
+                        <a href="https://github.com/keebii" target="_blank" class="contact-method">
+                            <i class="fab fa-github"></i>
+                            <span>@keebii</span>
+                        </a>
+                        <a href="https://instagram.com/kebi36489" target="_blank" class="contact-method">
+                            <i class="fab fa-instagram"></i>
+                            <span>@kebi36489</span>
+                        </a>
+                        <a href="https://tiktok.com/@keebiikoo" target="_blank" class="contact-method">
+                            <i class="fab fa-tiktok"></i>
+                            <span>@keebiikoo<
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Kuma Balcha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="text/babel" src="react-components.js"></script>
+    <script type="text/babel">
+        // Initialize React components when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Replace gallery section with React component
+            const galleryGrid = document.getElementById('galleryGrid');
+            if (galleryGrid) {
+                const galleryContainer = galleryGrid.parentElement;
+                const reactGalleryRoot = ReactDOM.createRoot(galleryContainer);
+                
+                // Create new gallery content with React
+                const newGalleryContent = React.createElement('div', null,
+                    React.createElement('h2', { className: 'section-title' }, 'Gallery'),
+                    React.createElement(Gallery)
+                );
+                
+                galleryContainer.innerHTML = '';
+                reactGalleryRoot.render(newGalleryContent);
+            }
+
+            // Replace profile photo with React component
+            const heroImage = document.querySelector('.hero-image');
+            if (heroImage) {
+                const profileRoot = ReactDOM.createRoot(heroImage);
+                profileRoot.render(React.createElement(ProfilePhoto));
+            }
+
+            // Initialize main app for project galleries
+            const appRoot = ReactDOM.createRoot(document.createElement('div'));
+            document.body.appendChild(appRoot._internalRoot.containerInfo);
+            appRoot.render(React.createElement(PortfolioApp));
+        });
+    </script>
+</body>
+</html>
