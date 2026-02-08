@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuma Balcha - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -25,96 +28,101 @@
             }
         }
     </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- React CDN -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- Babel for JSX transformation -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
 </head>
-<body class="font-sans text-slate-800 overflow-x-hidden bg-white">
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 md:px-12 flex justify-between items-center h-[70px]">
-            <div class="text-2xl font-bold text-slate-800 tracking-tight">
-                <a href="#home" class="hover:text-primary transition-colors">Kuma Balcha</a>
-            </div>
-            <ul class="hidden md:flex list-none gap-8">
-                <li><a href="#home" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Home</a></li>
-                <li><a href="#about" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">About</a></li>
-                <li><a href="#projects" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Projects</a></li>
-                <li><a href="#gallery" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Gallery</a></li>
-                <li><a href="#contact" class="text-slate-600 font-medium text-[0.95rem] hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Contact</a></li>
-            </ul>
-            <div class="md:hidden flex flex-col gap-[5px] cursor-pointer" id="mobile-menu">
-                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
-                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
-                <span class="w-6 h-[2px] bg-slate-800 rounded transition-all duration-300"></span>
+<body class="font-sans antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#home" class="text-2xl font-bold text-gray-900">Kuma Balcha</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-primary transition-colors font-medium">Projects</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-primary transition-colors font-medium">Gallery</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
+        
         <!-- Mobile Menu -->
-        <div class="hidden md:hidden fixed top-[70px] left-0 w-full bg-white shadow-lg py-12 flex-col items-center gap-4" id="mobile-menu-items">
-            <a href="#home" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Home</a>
-            <a href="#about" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">About</a>
-            <a href="#projects" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Projects</a>
-            <a href="#gallery" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Gallery</a>
-            <a href="#contact" class="text-slate-600 font-medium hover:text-primary transition-colors py-2">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+                <a href="#about" class="block text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+                <a href="#projects" class="block text-gray-700 hover:text-primary transition-colors font-medium">Projects</a>
+                <a href="#gallery" class="block text-gray-700 hover:text-primary transition-colors font-medium">Gallery</a>
+                <a href="#contact" class="block text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Kuma Balcha</span></h1>
-                <div class="animated-text">
-                    <span class="typing-text"></span>
-                    <span class="cursor">|</span>
-                </div>
-                <p class="hero-description">Passionate about creating innovative solutions and continuously learning new technologies to solve real-world problems.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-container">
-                    <div class="profile-placeholder" id="profileImage">
-                        <img src="images/IMG_3188.JPG" alt="Kuma Balcha Profile Photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="text-white space-y-4 sm:space-y-6 animate-fadeInUp text-center md:text-left px-2 sm:px-0">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                        Hi, I'm <span class="text-yellow-400">Kuma Balcha</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl lg:text-2xl font-medium opacity-90">
+                        <span id="typed-text"></span><span class="animate-pulse">|</span>
+                    </p>
+                    <p class="text-base sm:text-lg opacity-80 leading-relaxed max-w-xl mx-auto md:mx-0 px-2 sm:px-0 text-justify md:text-left">
+                        Passionate about creating innovative solutions and continuously learning new technologies to solve real-world problems.
+                    </p>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center md:justify-start">
+                        <a href="#projects" class="bg-white text-primary px-6 sm:px-8 py-3 rounded-full font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm sm:text-base">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition-all duration-300 text-sm sm:text-base">
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm Kuma Balcha, born in 1996 in Ethiopia. My educational journey began at Amus Gaba Elementary School (grades 1-8), continued at Kachisi High School (grades 9-11), and I completed my preparatory education at Ambo Future Generation Hope High School.</p>
-                    <p>I'm passionate about technology and development, always eager to learn new skills and take on challenging projects that make a difference.</p>
-                    <div class="education">
-                        <h3>Education</h3>
-                        <div class="education-item">
-                            <strong>Ambo Future Generation Hope High School</strong> - Preparatory & Entrance Exam
-                        </div>
-                        <div class="education-item">
-                            <strong>Kachisi High School</strong> - Grades 9-11
-                        </div>
-                        <div class="education-item">
-                            <strong>Amus Gaba Elementary School</strong> - Grades 1-8
-                        </div>
-                    </div>
-                    <div class="skills">
-                        <h3>Skills & Interests</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Web Development</span>
-                            <span class="skill-tag">React.js</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Programming</span>
-                            <span class="skill-tag">Problem Solving</span>
-                            <span class="skill-tag">Technology</span>
-                            <span class="skill-tag">Learning</span>
-                            <span class="skill-tag">Innovation</span>
+                
+                <!-- Hero Image -->
+                <div class="flex justify-center animate-fadeInUp mt-8 md:mt-0">
+                    <div class="relative">
+                        <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-white/20 backdrop-blur-lg flex items-center justify-center border-4 border-white/30 shadow-2xl overflow-hidden">
+                            <img src="images/IMG_3187.JPG" alt="Kuma Balcha" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -122,34 +130,90 @@
         </div>
     </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="House Rental Management System" style="width: 100%; height: 200px; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <h3>Digital House Rental Management System</h3>
-                        <p>A comprehensive digital platform for managing house rentals, tenant information, payment tracking, and property management with an intuitive dashboard.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Management System</span>
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4 px-4">About Me</h2>
+            <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8 sm:mb-12"></div>
+            
+            <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+                <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 space-y-4 sm:space-y-6 mx-2 sm:mx-0">
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                        I'm Kuma Balcha, born in 1996 in Ethiopia. My educational journey began at Amus Gaba Elementary School (grades 1-8), continued at Kachisi High School (grades 9-11), and I completed my preparatory education at Ambo Future Generation Hope High School.
+                    </p>
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+                        I'm passionate about technology and development, always eager to learn new skills and take on challenging projects that make a difference.
+                    </p>
+                </div>
+                
+                <!-- Education -->
+                <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 mx-2 sm:mx-0">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Education</h3>
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="border-l-4 border-primary pl-4 sm:pl-6 py-2 sm:py-3 hover:bg-gray-50 transition-colors rounded-r-lg">
+                            <p class="font-semibold text-gray-900 text-sm sm:text-base">Ambo Future Generation Hope High School</p>
+                            <p class="text-gray-600 text-sm sm:text-base">Preparatory & Entrance Exam</p>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/keebii/Digital-house-rental-management-system-" target="_blank" class="project-link">
+                        <div class="border-l-4 border-primary pl-4 sm:pl-6 py-2 sm:py-3 hover:bg-gray-50 transition-colors rounded-r-lg">
+                            <p class="font-semibold text-gray-900 text-sm sm:text-base">Kachisi High School</p>
+                            <p class="text-gray-600 text-sm sm:text-base">Grades 9-11</p>
+                        </div>
+                        <div class="border-l-4 border-primary pl-4 sm:pl-6 py-2 sm:py-3 hover:bg-gray-50 transition-colors rounded-r-lg">
+                            <p class="font-semibold text-gray-900 text-sm sm:text-base">Amus Gaba Elementary School</p>
+                            <p class="text-gray-600 text-sm sm:text-base">Grades 1-8</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="bg-white rounded-xl sm:rounded-2xl shadow-lg p-6 sm:p-8 mx-2 sm:mx-0">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">Skills & Interests</h3>
+                    <div class="flex flex-wrap gap-2 sm:gap-3">
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Web Development</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">React.js</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">JavaScript</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Programming</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Problem Solving</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Technology</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Learning</span>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full font-medium shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all text-sm sm:text-base">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-12 sm:py-16 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4 px-4">My Projects</h2>
+            <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8 sm:mb-12"></div>
+            
+            <div class="max-w-2xl mx-auto px-2 sm:px-0">
+                <!-- Project Card -->
+                <div class="bg-white rounded-xl sm:rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
+                    <div class="h-48 sm:h-56 md:h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="House Rental Management System" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">Digital House Rental Management System</h3>
+                        <p class="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base text-justify">
+                            A comprehensive digital platform for managing house rentals, tenant information, payment tracking, and property management with an intuitive dashboard.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                            <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">React.js</span>
+                            <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">HTML</span>
+                            <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">CSS</span>
+                            <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">JavaScript</span>
+                            <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">Management System</span>
+                        </div>
+                        <div class="flex flex-wrap gap-3 sm:gap-4">
+                            <a href="https://github.com/keebii/Digital-house-rental-management-system-" target="_blank" class="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold transition-colors text-sm sm:text-base">
                                 <i class="fab fa-github"></i> View Code
                             </a>
-                            <a href="#" class="project-link demo-link" data-project="rental">
+                            <a href="#" class="inline-flex items-center gap-2 text-primary hover:text-secondary font-semibold transition-colors text-sm sm:text-base">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
-                            <button class="project-link gallery-link" data-project="rental">
-                                <i class="fas fa-images"></i> Gallery
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -157,111 +221,198 @@
         </div>
     </section>
 
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Your Personal Photos -->
-                <div class="gallery-item">
-                    <img src="images/IMG_3187.JPG" alt="My Photo 1" style="width: 100%; height: 250px; object-fit: cover;">
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4 px-4">Gallery</h2>
+            <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8 sm:mb-12"></div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-0">
+                <!-- Gallery Item 1 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3188.JPG" alt="Gallery Image 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/IMG_3558.JPG" alt="My Photo 2" style="width: 100%; height: 250px; object-fit: cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/IMG_3266 (2).JPG" alt="My Photo 3" style="width: 100%; height: 250px; object-fit: cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/IMG_3257.JPG" alt="My Photo 4" style="width: 100%; height: 250px; object-fit: cover;">
-                </div>
-                <div class="gallery-item">
-                    <img src="images/IMG_3252.JPG" alt="My Photo 5" style="width: 100%; height: 250px; object-fit: cover;">
-              
                 
-                <!-- Default placeholder items for demonstration -->
-                <div class="gallery-item">
+                <!-- Gallery Item 2 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3251.JPG" alt="Gallery Image 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3252.JPG" alt="Gallery Image 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3257.JPG" alt="Gallery Image 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3258.JPG" alt="Gallery Image 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3266 (2).JPG" alt="Gallery Image 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3267.JPG" alt="Gallery Image 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3558.JPG" alt="Gallery Image 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Gallery Item 9 -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="images/IMG_3566.JPG" alt="Gallery Image 9" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4 px-4">Get In Touch</h2>
+            <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8 sm:mb-12"></div>
+            
+            <div class="max-w-3xl mx-auto text-center px-2 sm:px-0">
+                <p class="text-base sm:text-xl mb-8 sm:mb-12 text-gray-300 leading-relaxed">
+                    I'm always interested in new opportunities and collaborations. Let's connect!
+                </p>
+                
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                    <a href="mailto:keebiibaalchaa@gmail.com" class="flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl transition-all duration-300 backdrop-blur-sm">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-lg sm:text-xl"></i>
+                        </div>
+                        <span class="text-left font-medium text-sm sm:text-base break-all">keebiibaalchaa@gmail.com</span>
+                    </a>
                     
-                    </div>
-                </div>
-                
-                    </div>
-                </div>
-        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>I'm always interested in new opportunities and collaborations. Let's connect!</p>
-                    <div class="contact-methods">
-                        <a href="mailto:keebiibaalchaa@gmail.com" class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <span>keebiibaalchaa@gmail.com</span>
-                        </a>
-                        <a href="https://t.me/unspoken24cs" target="_blank" class="contact-method">
-                            <i class="fab fa-telegram"></i>
-                            <span>@unspoken24cs</span>
-                        </a>
-                        <a href="https://github.com/keebii" target="_blank" class="contact-method">
-                            <i class="fab fa-github"></i>
-                            <span>@keebii</span>
-                        </a>
-                        <a href="https://instagram.com/kebi36489" target="_blank" class="contact-method">
-                            <i class="fab fa-instagram"></i>
-                            <span>@kebi36489</span>
-                        </a>
-                        <a href="https://tiktok.com/@keebiikoo" target="_blank" class="contact-method">
-                            <i class="fab fa-tiktok"></i>
-                            <span>@keebiikoo<
+                    <a href="https://t.me/unspoken24cs" target="_blank" class="flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl transition-all duration-300 backdrop-blur-sm">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-telegram text-lg sm:text-xl"></i>
+                        </div>
+                        <span class="text-left font-medium text-sm sm:text-base">@unspoken24cs</span>
+                    </a>
+                    
+                    <a href="https://github.com/keebii" target="_blank" class="flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl transition-all duration-300 backdrop-blur-sm">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-github text-lg sm:text-xl"></i>
+                        </div>
+                        <span class="text-left font-medium text-sm sm:text-base">@keebii</span>
+                    </a>
+                    
+                    <a href="https://instagram.com/kebi36489" target="_blank" class="flex items-center gap-3 sm:gap-4 bg-white/10 hover:bg-white/20 p-4 sm:p-6 rounded-xl transition-all duration-300 backdrop-blur-sm">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-instagram text-lg sm:text-xl"></i>
+                        </div>
+                        <span class="text-left font-medium text-sm sm:text-base">@kebi36489</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Kuma Balcha. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm sm:text-base">&copy; 2026 Kuma Balcha. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script type="text/babel" src="react-components.js"></script>
-    <script type="text/babel">
-        // Initialize React components when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            // Replace gallery section with React component
-            const galleryGrid = document.getElementById('galleryGrid');
-            if (galleryGrid) {
-                const galleryContainer = galleryGrid.parentElement;
-                const reactGalleryRoot = ReactDOM.createRoot(galleryContainer);
-                
-                // Create new gallery content with React
-                const newGalleryContent = React.createElement('div', null,
-                    React.createElement('h2', { className: 'section-title' }, 'Gallery'),
-                    React.createElement(Gallery)
-                );
-                
-                galleryContainer.innerHTML = '';
-                reactGalleryRoot.render(newGalleryContent);
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Typing Animation
+        const texts = [
+            "Web Developer",
+            "React.js Developer",
+            "Problem Solver",
+            "Tech Enthusiast"
+        ];
+        
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedTextElement = document.getElementById('typed-text');
+        
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
             }
-
-            // Replace profile photo with React component
-            const heroImage = document.querySelector('.hero-image');
-            if (heroImage) {
-                const profileRoot = ReactDOM.createRoot(heroImage);
-                profileRoot.render(React.createElement(ProfilePhoto));
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
             }
-
-            // Initialize main app for project galleries
-            const appRoot = ReactDOM.createRoot(document.createElement('div'));
-            document.body.appendChild(appRoot._internalRoot.containerInfo);
-            appRoot.render(React.createElement(PortfolioApp));
+            
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(type, typingSpeed);
+        }
+        
+        // Start typing animation
+        setTimeout(type, 1000);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
         });
     </script>
 </body>
